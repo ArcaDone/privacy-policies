@@ -1,373 +1,453 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policies · Dan Arca</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policies · Done Arca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  :root {
-    --bg: #f5f2ed;
-    --ink: #1a1714;
-    --muted: #7a7068;
-    --accent: #c84b2f;
-    --card: #ffffff;
-    --border: #e2ddd6;
-    --radius: 16px;
-  }
+    :root {
+      --bg: #f5f2ed;
+      --ink: #1a1714;
+      --muted: #7a7068;
+      --accent: #c84b2f;
+      --card: #ffffff;
+      --border: #e2ddd6;
+      --radius: 16px;
+    }
 
-  html { font-size: 16px; }
+    html {
+      font-size: 16px;
+    }
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 24px 80px;
-  }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 24px 80px;
+    }
 
-  /* ── Noise texture overlay ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: .6;
-  }
+    /* ── Noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: .6;
+    }
 
-  /* ── Top bar ── */
-  header {
-    width: 100%;
-    max-width: 720px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 32px 0 0;
-    position: relative;
-    z-index: 1;
-  }
+    /* ── Top bar ── */
+    header {
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 0 0;
+      position: relative;
+      z-index: 1;
+    }
 
-  .logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem;
-    letter-spacing: .02em;
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .logo span { color: var(--accent); }
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: .02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
 
-  /* ── Language switcher ── */
-  .lang-switcher {
-    display: flex;
-    gap: 4px;
-    background: var(--border);
-    border-radius: 99px;
-    padding: 3px;
-  }
-  .lang-btn {
-    border: none;
-    background: transparent;
-    padding: 5px 14px;
-    border-radius: 99px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: .75rem;
-    font-weight: 500;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: var(--muted);
-    transition: background .2s, color .2s;
-  }
-  .lang-btn.active {
-    background: var(--card);
-    color: var(--ink);
-    box-shadow: 0 1px 4px rgba(0,0,0,.10);
-  }
+    .logo span {
+      color: var(--accent);
+    }
 
-  /* ── Hero ── */
-  .hero {
-    width: 100%;
-    max-width: 720px;
-    margin-top: 72px;
-    position: relative;
-    z-index: 1;
-  }
+    /* ── Language switcher ── */
+    .lang-switcher {
+      display: flex;
+      gap: 4px;
+      background: var(--border);
+      border-radius: 99px;
+      padding: 3px;
+    }
 
-  .hero-label {
-    font-size: .72rem;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 500;
-    margin-bottom: 16px;
-  }
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 5px 14px;
+      border-radius: 99px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background .2s, color .2s;
+    }
 
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.4rem, 6vw, 3.8rem);
-    line-height: 1.1;
-    letter-spacing: -.01em;
-    color: var(--ink);
-    max-width: 560px;
-  }
+    .lang-btn.active {
+      background: var(--card);
+      color: var(--ink);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .10);
+    }
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+    /* ── Hero ── */
+    .hero {
+      width: 100%;
+      max-width: 720px;
+      margin-top: 72px;
+      position: relative;
+      z-index: 1;
+    }
 
-  .hero-sub {
-    margin-top: 20px;
-    color: var(--muted);
-    font-size: 1rem;
-    line-height: 1.65;
-    max-width: 480px;
-  }
+    .hero-label {
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
 
-  /* ── Divider ── */
-  .divider {
-    width: 100%;
-    max-width: 720px;
-    height: 1px;
-    background: var(--border);
-    margin: 48px 0;
-    position: relative;
-    z-index: 1;
-  }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      max-width: 560px;
+    }
 
-  /* ── Apps grid ── */
-  .section-label {
-    width: 100%;
-    max-width: 720px;
-    font-size: .72rem;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 500;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
-  }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
 
-  .apps-grid {
-    width: 100%;
-    max-width: 720px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    position: relative;
-    z-index: 1;
-  }
+    .hero-sub {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.65;
+      max-width: 480px;
+    }
 
-  .app-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px 28px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform .2s, box-shadow .2s, border-color .2s;
-    position: relative;
-    overflow: hidden;
-  }
+    /* ── Divider ── */
+    .divider {
+      width: 100%;
+      max-width: 720px;
+      height: 1px;
+      background: var(--border);
+      margin: 48px 0;
+      position: relative;
+      z-index: 1;
+    }
 
-  .app-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, transparent 60%, rgba(200,75,47,.05));
-    opacity: 0;
-    transition: opacity .3s;
-  }
+    /* ── Apps grid ── */
+    .section-label {
+      width: 100%;
+      max-width: 720px;
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
 
-  .app-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0,0,0,.09);
-    border-color: #d4cfc8;
-  }
-  .app-card:hover::after { opacity: 1; }
+    .apps-grid {
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
 
-  .app-info { display: flex; flex-direction: column; gap: 4px; }
+    .app-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      position: relative;
+      overflow: hidden;
+    }
 
-  .app-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.25rem;
-    color: var(--ink);
-  }
+    .app-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 60%, rgba(200, 75, 47, .05));
+      opacity: 0;
+      transition: opacity .3s;
+    }
 
-  .app-desc {
-    font-size: .85rem;
-    color: var(--muted);
-    font-weight: 400;
-  }
+    .app-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .09);
+      border-color: #d4cfc8;
+    }
 
-  .app-arrow {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background .2s, border-color .2s;
-  }
-  .app-card:hover .app-arrow {
-    background: var(--accent);
-    border-color: var(--accent);
-  }
-  .app-arrow svg { transition: stroke .2s; }
-  .app-card:hover .app-arrow svg { stroke: #fff; }
+    .app-card:hover::after {
+      opacity: 1;
+    }
 
-  /* ── Footer ── */
-  footer {
-    width: 100%;
-    max-width: 720px;
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    position: relative;
-    z-index: 1;
-  }
+    .app-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
 
-  .footer-copy {
-    font-size: .82rem;
-    color: var(--muted);
-  }
+    .app-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--ink);
+    }
 
-  .footer-email {
-    font-size: .82rem;
-    color: var(--muted);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 1px;
-    transition: color .2s, border-color .2s;
-  }
-  .footer-email:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
+    .app-desc {
+      font-size: .85rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
 
-  /* ── Entrance animation ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+    .app-arrow {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .2s, border-color .2s;
+    }
 
-  header   { animation: fadeUp .5s ease both; }
-  .hero    { animation: fadeUp .55s .1s ease both; }
-  .divider { animation: fadeUp .5s .2s ease both; }
-  .section-label { animation: fadeUp .5s .25s ease both; }
-  .app-card { animation: fadeUp .5s .3s ease both; }
-  footer   { animation: fadeUp .5s .35s ease both; }
+    .app-card:hover .app-arrow {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
 
-  @media (max-width: 480px) {
-    .hero h1 { font-size: 2.2rem; }
-    footer { flex-direction: column; align-items: flex-start; }
-  }
-</style>
+    .app-arrow svg {
+      transition: stroke .2s;
+    }
+
+    .app-card:hover .app-arrow svg {
+      stroke: #fff;
+    }
+
+    /* ── Footer ── */
+    footer {
+      width: 100%;
+      max-width: 720px;
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-copy {
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    .footer-email {
+      font-size: .82rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      transition: color .2s, border-color .2s;
+    }
+
+    .footer-email:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ── Entrance animation ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header {
+      animation: fadeUp .5s ease both;
+    }
+
+    .hero {
+      animation: fadeUp .55s .1s ease both;
+    }
+
+    .divider {
+      animation: fadeUp .5s .2s ease both;
+    }
+
+    .section-label {
+      animation: fadeUp .5s .25s ease both;
+    }
+
+    .app-card {
+      animation: fadeUp .5s .3s ease both;
+    }
+
+    footer {
+      animation: fadeUp .5s .35s ease both;
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <a class="logo" href="#"><span>Dan</span> Arca</a>
-  <div class="lang-switcher">
-    <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
-    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+  <header>
+    <a class="logo" href="#"><span>Dan</span> Arca</a>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="hero-label" data-key="label">Documentazione Legale</p>
+    <h1 data-key="title">Privacy<br><em>Policies</em></h1>
+    <p class="hero-sub" data-key="subtitle">
+      In questa pagina trovi le informative sulla privacy delle applicazioni sviluppate da Done Arca. Seleziona un'app
+      per leggere la relativa policy.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <p class="section-label" data-key="apps-label">Applicazioni</p>
+
+  <div class="apps-grid">
+    <a class="app-card" href="lattosio-free.html">
+      <div class="app-info">
+        <span class="app-name">Lattosio Free</span>
+        <span class="app-desc" data-key="app-desc-1">Guida agli alimenti e al contenuto di lattosio</span>
+      </div>
+      <div class="app-arrow">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1a1714" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4" />
+        </svg>
+      </div>
+    </a>
+
+    <a class="app-card" href="mywardrobe.html">
+      <div class="app-info">
+        <span class="app-name">MyWardrobe</span>
+        <span class="app-desc" data-key="app-desc-2">Organizza outfit e ricevi suggerimenti in base al meteo</span>
+      </div>
+      <div class="app-arrow">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1a1714" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4" />
+        </svg>
+      </div>
+    </a>
   </div>
-</header>
 
-<section class="hero">
-  <p class="hero-label" data-key="label">Documentazione Legale</p>
-  <h1 data-key="title">Privacy<br><em>Policies</em></h1>
-  <p class="hero-sub" data-key="subtitle">
-    In questa pagina trovi le informative sulla privacy delle applicazioni sviluppate da Dan Arca. Seleziona un'app per leggere la relativa policy.
-  </p>
-</section>
+  <footer>
+    <span class="footer-copy" data-key="footer-copy">© 2025 Done Arca · Tutti i diritti riservati</span>
+    <a class="footer-email" href="mailto:dan.arca91@gmail.com">dan.arca91@gmail.com</a>
+  </footer>
 
-<div class="divider"></div>
-
-<p class="section-label" data-key="apps-label">Applicazioni</p>
-
-<div class="apps-grid">
-  <a class="app-card" href="lattosio-free.html">
-    <div class="app-info">
-      <span class="app-name">Lattosio Free</span>
-      <span class="app-desc" data-key="app-desc-1">Guida agli alimenti e al contenuto di lattosio</span>
-    </div>
-    <div class="app-arrow">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1a1714" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 8h10M9 4l4 4-4 4"/>
-      </svg>
-    </div>
-  </a>
-</div>
-
-<footer>
-  <span class="footer-copy" data-key="footer-copy">© 2025 Dan Arca · Tutti i diritti riservati</span>
-  <a class="footer-email" href="mailto:dan.arca91@gmail.com">dan.arca91@gmail.com</a>
-</footer>
-
-<script>
-  const strings = {
-    it: {
-      "label":        "Documentazione Legale",
-      "title":        "Privacy<br><em>Policies</em>",
-      "subtitle":     "In questa pagina trovi le informative sulla privacy delle applicazioni sviluppate da Dan Arca. Seleziona un'app per leggere la relativa policy.",
-      "apps-label":   "Applicazioni",
-      "app-desc-1":   "Guida agli alimenti e al contenuto di lattosio",
-      "footer-copy":  "© 2025 Dan Arca · Tutti i diritti riservati",
-    },
-    en: {
-      "label":        "Legal Documentation",
-      "title":        "Privacy<br><em>Policies</em>",
-      "subtitle":     "This page contains the privacy policies for apps developed by Dan Arca. Select an app to read its policy.",
-      "apps-label":   "Applications",
-      "app-desc-1":   "Food guide and lactose content tracker",
-      "footer-copy":  "© 2025 Dan Arca · All rights reserved",
-    }
-  };
-
-  function setLang(lang) {
-    document.querySelectorAll('[data-key]').forEach(el => {
-      const key = el.dataset.key;
-      if (strings[lang][key] !== undefined) {
-        el.innerHTML = strings[lang][key];
+  <script>
+    const strings = {
+      it: {
+        "label": "Documentazione Legale",
+        "title": "Privacy<br><em>Policies</em>",
+        "subtitle": "In questa pagina trovi le informative sulla privacy delle applicazioni sviluppate da Done Arca. Seleziona un'app per leggere la relativa policy.",
+        "apps-label": "Applicazioni",
+        "app-desc-1": "Guida agli alimenti e al contenuto di lattosio",
+        "app-desc-2": "Organizza outfit e ricevi suggerimenti in base al meteo",
+        "footer-copy": "© 2025 Done Arca · Tutti i diritti riservati",
+      },
+      en: {
+        "label": "Legal Documentation",
+        "title": "Privacy<br><em>Policies</em>",
+        "subtitle": "This page contains the privacy policies for apps developed by Done Arca. Select an app to read its policy.",
+        "apps-label": "Applications",
+        "app-desc-1": "Food guide and lactose content tracker",
+        "app-desc-2": "Organize outfits and get weather-based suggestions",
+        "footer-copy": "© 2025 Done Arca · All rights reserved",
       }
-    });
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.lang === lang);
-    });
-    document.documentElement.lang = lang;
-    localStorage.setItem('lang', lang);
-  }
+    };
 
-  // Auto-detect language
-  (function init() {
-    const saved = localStorage.getItem('lang');
-    const browser = (navigator.language || 'it').slice(0, 2).toLowerCase();
-    const detected = saved || (browser === 'it' ? 'it' : 'en');
-    setLang(detected);
-  })();
-</script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.dataset.key;
+        if (strings[lang][key] !== undefined) {
+          el.innerHTML = strings[lang][key];
+        }
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+    }
+
+    // Auto-detect language
+    (function init() {
+      const saved = localStorage.getItem('lang');
+      const browser = (navigator.language || 'it').slice(0, 2).toLowerCase();
+      const detected = saved || (browser === 'it' ? 'it' : 'en');
+      setLang(detected);
+    })();
+  </script>
 
 </body>
+
 </html>
