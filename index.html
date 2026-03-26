@@ -1,453 +1,1004 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policies · Done Arca</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
-    rel="stylesheet">
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArcaDone · App Studio</title>
+<meta name="description" content="Sito vetrina per le app sviluppate da ArcaDone, con link agli store e privacy policy dedicate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4efe8;
+    --bg-strong: #e8ddd0;
+    --card: rgba(255, 252, 247, 0.88);
+    --card-solid: #fffaf4;
+    --ink: #181512;
+    --muted: #665d55;
+    --accent: #b64a2b;
+    --accent-dark: #8f341b;
+    --line: rgba(24, 21, 18, 0.10);
+    --shadow: 0 24px 60px rgba(73, 48, 32, 0.12);
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 16px;
+    --max: 1120px;
+  }
 
-    :root {
-      --bg: #f5f2ed;
-      --ink: #1a1714;
-      --muted: #7a7068;
-      --accent: #c84b2f;
-      --card: #ffffff;
-      --border: #e2ddd6;
-      --radius: 16px;
-    }
+  * { box-sizing: border-box; }
 
-    html {
-      font-size: 16px;
-    }
+  html { scroll-behavior: smooth; }
 
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 24px 80px;
-    }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Manrope", sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(182, 74, 43, 0.12), transparent 30%),
+      radial-gradient(circle at 85% 10%, rgba(232, 221, 208, 0.9), transparent 22%),
+      linear-gradient(180deg, #f8f4ef 0%, #f4efe8 55%, #efe7dd 100%);
+    min-height: 100vh;
+  }
 
-    /* ── Noise texture overlay ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: .6;
-    }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='rgba(24,21,18,0.04)' stroke-width='1'%3E%3Cpath d='M0 80h160M80 0v160'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.55;
+  }
 
-    /* ── Top bar ── */
-    header {
-      width: 100%;
-      max-width: 720px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 32px 0 0;
-      position: relative;
-      z-index: 1;
-    }
+  a { color: inherit; }
 
-    .logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      letter-spacing: .02em;
-      color: var(--ink);
-      text-decoration: none;
-    }
+  .page {
+    width: min(calc(100% - 40px), var(--max));
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
 
-    .logo span {
-      color: var(--accent);
-    }
+  header {
+    padding: 26px 0 10px;
+  }
 
-    /* ── Language switcher ── */
-    .lang-switcher {
-      display: flex;
-      gap: 4px;
-      background: var(--border);
-      border-radius: 99px;
-      padding: 3px;
-    }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 18px;
+    background: rgba(255, 250, 244, 0.7);
+    border: 1px solid rgba(24, 21, 18, 0.08);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(73, 48, 32, 0.08);
+  }
 
-    .lang-btn {
-      border: none;
-      background: transparent;
-      padding: 5px 14px;
-      border-radius: 99px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .75rem;
-      font-weight: 500;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      cursor: pointer;
-      color: var(--muted);
-      transition: background .2s, color .2s;
-    }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
 
-    .lang-btn.active {
-      background: var(--card);
-      color: var(--ink);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, .10);
-    }
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--accent) 0%, #e09c76 100%);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    box-shadow: 0 12px 24px rgba(182, 74, 43, 0.25);
+  }
 
-    /* ── Hero ── */
-    .hero {
-      width: 100%;
-      max-width: 720px;
-      margin-top: 72px;
-      position: relative;
-      z-index: 1;
-    }
+  .brand-copy {
+    min-width: 0;
+  }
 
-    .hero-label {
-      font-size: .72rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 16px;
-    }
+  .brand-title {
+    display: block;
+    font-weight: 700;
+    font-size: 0.98rem;
+  }
 
-    .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.4rem, 6vw, 3.8rem);
-      line-height: 1.1;
-      letter-spacing: -.01em;
-      color: var(--ink);
-      max-width: 560px;
-    }
+  .brand-subtitle {
+    display: block;
+    color: var(--muted);
+    font-size: 0.82rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-    .hero-sub {
-      margin-top: 20px;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.65;
-      max-width: 480px;
-    }
+  .nav-link {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--muted);
+    padding: 10px 14px;
+    border-radius: 999px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
 
-    /* ── Divider ── */
-    .divider {
-      width: 100%;
-      max-width: 720px;
-      height: 1px;
-      background: var(--border);
-      margin: 48px 0;
-      position: relative;
-      z-index: 1;
-    }
+  .nav-link:hover {
+    background: rgba(24, 21, 18, 0.06);
+    color: var(--ink);
+  }
 
-    /* ── Apps grid ── */
-    .section-label {
-      width: 100%;
-      max-width: 720px;
-      font-size: .72rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 500;
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 1;
-    }
+  .lang-switcher {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 999px;
+    background: rgba(24, 21, 18, 0.06);
+  }
 
-    .apps-grid {
-      width: 100%;
-      max-width: 720px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      position: relative;
-      z-index: 1;
-    }
+  .lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 9px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  }
 
-    .app-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      text-decoration: none;
-      color: inherit;
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-      position: relative;
-      overflow: hidden;
-    }
+  .lang-btn.active {
+    background: #fff;
+    color: var(--ink);
+    box-shadow: 0 6px 18px rgba(24, 21, 18, 0.10);
+  }
 
-    .app-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 60%, rgba(200, 75, 47, .05));
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+    gap: 30px;
+    padding: 38px 0 28px;
+    align-items: stretch;
+  }
+
+  .hero-copy {
+    padding: 26px 0;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 44px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: clamp(3rem, 7vw, 5.6rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    max-width: 10ch;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    margin: 22px 0 0;
+    max-width: 58ch;
+    font-size: 1.06rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 999px;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: #fff;
+    box-shadow: 0 14px 30px rgba(24, 21, 18, 0.18);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 250, 244, 0.72);
+    border: 1px solid rgba(24, 21, 18, 0.08);
+    color: var(--ink);
+  }
+
+  .hero-panel {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background:
+      linear-gradient(160deg, rgba(255, 250, 244, 0.92), rgba(241, 229, 218, 0.86)),
+      var(--card-solid);
+    border: 1px solid rgba(24, 21, 18, 0.08);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    min-height: 420px;
+  }
+
+  .hero-panel::before,
+  .hero-panel::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(6px);
+  }
+
+  .hero-panel::before {
+    width: 180px;
+    height: 180px;
+    right: -20px;
+    top: -30px;
+    background: rgba(182, 74, 43, 0.16);
+  }
+
+  .hero-panel::after {
+    width: 220px;
+    height: 220px;
+    left: -70px;
+    bottom: -100px;
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .panel-card {
+    position: relative;
+    z-index: 1;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(24, 21, 18, 0.08);
+    padding: 20px;
+    box-shadow: 0 12px 26px rgba(73, 48, 32, 0.10);
+  }
+
+  .panel-card + .panel-card {
+    margin-top: 14px;
+  }
+
+  .panel-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .panel-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 10px 0 8px;
+  }
+
+  .panel-text {
+    font-size: 0.94rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(182, 74, 43, 0.08);
+    color: var(--accent-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  section {
+    padding: 34px 0;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .section-copy {
+    max-width: 56ch;
+  }
+
+  .section-tag {
+    margin: 0 0 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .section-title {
+    margin: 0;
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.04em;
+  }
+
+  .section-description {
+    margin: 12px 0 0;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .app-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(180deg, rgba(255, 251, 246, 0.95), rgba(247, 239, 232, 0.9));
+    border: 1px solid rgba(24, 21, 18, 0.08);
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .app-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -40px -70px auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(182, 74, 43, 0.07);
+  }
+
+  .app-top,
+  .app-body,
+  .app-links {
+    position: relative;
+    z-index: 1;
+  }
+
+  .app-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(24, 21, 18, 0.06);
+    color: var(--muted);
+  }
+
+  .app-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 14px 28px rgba(24, 21, 18, 0.14);
+    border: 1px solid rgba(24, 21, 18, 0.08);
+  }
+
+  .app-name {
+    margin: 0;
+    font-family: "Fraunces", serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  .app-description {
+    margin: 12px 0 0;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px 0 0;
+  }
+
+  .feature-item {
+    border-radius: 999px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(24, 21, 18, 0.08);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .app-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .store-link,
+  .policy-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 800;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .store-link:hover,
+  .policy-link:hover {
+    transform: translateY(-1px);
+  }
+
+  .store-link {
+    background: var(--ink);
+    color: #fff;
+    border: 1px solid transparent;
+  }
+
+  .store-link.is-disabled {
+    background: rgba(24, 21, 18, 0.08);
+    color: var(--muted);
+    pointer-events: none;
+  }
+
+  .policy-link {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid rgba(24, 21, 18, 0.12);
+  }
+
+  .notes-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 18px;
+  }
+
+  .shots-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .shot-card {
+    border-radius: 24px;
+    padding: 10px;
+    background: rgba(255, 250, 244, 0.78);
+    border: 1px solid rgba(24, 21, 18, 0.08);
+    box-shadow: var(--shadow);
+  }
+
+  .shot-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+  }
+
+  .note-card {
+    border-radius: var(--radius-xl);
+    background: rgba(255, 250, 244, 0.76);
+    border: 1px solid rgba(24, 21, 18, 0.08);
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .note-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+  }
+
+  .note-card p,
+  .note-card li {
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .note-list {
+    margin: 14px 0 0;
+    padding-left: 18px;
+  }
+
+  footer {
+    padding: 12px 0 52px;
+  }
+
+  .footer-shell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid rgba(24, 21, 18, 0.10);
+    padding-top: 22px;
+  }
+
+  .footer-copy {
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .footer-mail {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .footer-mail:hover {
+    color: var(--accent);
+  }
+
+  .reveal {
+    animation: fadeUp 0.65s ease both;
+  }
+
+  .reveal-delay-1 { animation-delay: 0.08s; }
+  .reveal-delay-2 { animation-delay: 0.16s; }
+  .reveal-delay-3 { animation-delay: 0.24s; }
+
+  @keyframes fadeUp {
+    from {
       opacity: 0;
-      transition: opacity .3s;
+      transform: translateY(22px);
     }
-
-    .app-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, .09);
-      border-color: #d4cfc8;
-    }
-
-    .app-card:hover::after {
+    to {
       opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 980px) {
+    .hero,
+    .notes-grid,
+    .apps-grid {
+      grid-template-columns: 1fr;
     }
 
-    .app-info {
-      display: flex;
+    .shots-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hero-copy {
+      padding-bottom: 0;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .page {
+      width: min(calc(100% - 28px), var(--max));
+    }
+
+    .topbar,
+    .section-head,
+    .footer-shell {
       flex-direction: column;
-      gap: 4px;
+      align-items: flex-start;
     }
 
-    .app-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      color: var(--ink);
-    }
-
-    .app-desc {
-      font-size: .85rem;
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    .app-arrow {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background .2s, border-color .2s;
-    }
-
-    .app-card:hover .app-arrow {
-      background: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .app-arrow svg {
-      transition: stroke .2s;
-    }
-
-    .app-card:hover .app-arrow svg {
-      stroke: #fff;
-    }
-
-    /* ── Footer ── */
-    footer {
+    .header-actions {
       width: 100%;
-      max-width: 720px;
-      margin-top: 64px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-      display: flex;
       justify-content: space-between;
-      align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
-      position: relative;
-      z-index: 1;
     }
 
-    .footer-copy {
-      font-size: .82rem;
-      color: var(--muted);
+    .hero-panel {
+      min-height: auto;
     }
 
-    .footer-email {
-      font-size: .82rem;
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1px;
-      transition: color .2s, border-color .2s;
+    .shots-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero h1 {
+      font-size: 2.8rem;
     }
 
-    .footer-email:hover {
-      color: var(--accent);
-      border-color: var(--accent);
+    .app-links,
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
     }
 
-    /* ── Entrance animation ── */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .btn,
+    .store-link,
+    .policy-link {
+      width: 100%;
     }
 
-    header {
-      animation: fadeUp .5s ease both;
+    .shots-grid {
+      grid-template-columns: 1fr;
     }
-
-    .hero {
-      animation: fadeUp .55s .1s ease both;
-    }
-
-    .divider {
-      animation: fadeUp .5s .2s ease both;
-    }
-
-    .section-label {
-      animation: fadeUp .5s .25s ease both;
-    }
-
-    .app-card {
-      animation: fadeUp .5s .3s ease both;
-    }
-
-    footer {
-      animation: fadeUp .5s .35s ease both;
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
-
 <body>
+  <div class="page">
+    <header class="reveal">
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-mark">DA</div>
+          <div class="brand-copy">
+            <span class="brand-title">ArcaDone</span>
+            <span class="brand-subtitle" data-key="brand-subtitle">App design, mobile products and legal pages</span>
+          </div>
+        </div>
 
-  <header>
-    <a class="logo" href="#"><span>Done</span> Arca</a>
-    <div class="lang-switcher">
-      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
-      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-    </div>
-  </header>
-
-  <section class="hero">
-    <p class="hero-label" data-key="label">Documentazione Legale</p>
-    <h1 data-key="title">Privacy<br><em>Policies</em></h1>
-    <p class="hero-sub" data-key="subtitle">
-      In questa pagina trovi le informative sulla privacy delle applicazioni sviluppate da Done Arca. Seleziona un'app
-      per leggere la relativa policy.
-    </p>
-  </section>
-
-  <div class="divider"></div>
-
-  <p class="section-label" data-key="apps-label">Applicazioni</p>
-
-  <div class="apps-grid">
-    <a class="app-card" href="lattosio-free.html">
-      <div class="app-info">
-        <span class="app-name">Lattosio Free</span>
-        <span class="app-desc" data-key="app-desc-1">Guida agli alimenti e al contenuto di lattosio</span>
+        <div class="header-actions">
+          <a class="nav-link" href="#apps" data-key="nav-apps">Apps</a>
+          <a class="nav-link" href="#about" data-key="nav-about">About</a>
+          <div class="lang-switcher">
+            <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+            <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          </div>
+        </div>
       </div>
-      <div class="app-arrow">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1a1714" stroke-width="1.8"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 8h10M9 4l4 4-4 4" />
-        </svg>
-      </div>
-    </a>
+    </header>
 
-    <a class="app-card" href="mywardrobe.html">
-      <div class="app-info">
-        <span class="app-name">MyWardrobe</span>
-        <span class="app-desc" data-key="app-desc-2">Organizza outfit e ricevi suggerimenti in base al meteo</span>
+    <main>
+      <section class="hero">
+        <div class="hero-copy reveal reveal-delay-1">
+          <p class="eyebrow" data-key="hero-eyebrow">Mobile App Showcase</p>
+          <h1 data-key="hero-title">Apps with a <em>clear identity</em>.</h1>
+          <p class="hero-subtitle" data-key="hero-subtitle">
+            Mobile apps designed to be useful every day, with a clean experience, real utility, and dedicated privacy pages.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#apps" data-key="hero-cta-primary">Explore apps</a>
+            <a class="btn btn-secondary" href="mailto:dan.arca91@gmail.com" data-key="hero-cta-secondary">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal reveal-delay-2">
+          <div class="panel-card">
+            <div class="panel-label" data-key="panel-label-1">Featured focus</div>
+            <div class="panel-title" data-key="panel-title-1">Useful apps built around everyday decisions</div>
+            <p class="panel-text" data-key="panel-text-1">
+              From grocery choices to outfit planning, each app is designed to make a specific task easier, faster, and more reliable.
+            </p>
+            <div class="pill-row">
+              <span class="pill" data-key="pill-1">iOS and Android</span>
+              <span class="pill" data-key="pill-2">Practical utility</span>
+              <span class="pill" data-key="pill-3">Privacy included</span>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-label" data-key="panel-label-2">Approach</div>
+            <div class="panel-title" data-key="panel-title-2">Simple products, clear interfaces, and focused features</div>
+            <p class="panel-text" data-key="panel-text-2">
+              The goal is to ship apps that feel approachable on first use and immediately helpful in daily life.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="apps" class="reveal reveal-delay-2">
+        <div class="section-head">
+          <div class="section-copy">
+            <p class="section-tag" data-key="apps-tag">Featured apps</p>
+            <h2 class="section-title" data-key="apps-title">Apps designed to solve real daily needs</h2>
+            <p class="section-description" data-key="apps-description">
+              Explore the current apps, open their store pages, and read the related privacy policies.
+            </p>
+          </div>
+        </div>
+
+        <div class="apps-grid">
+          <article class="app-card">
+            <div class="app-top">
+              <span class="app-badge" data-key="app1-badge">Health & food</span>
+              <img class="app-icon" src="ic_lattosio_free.png" alt="Lattosio Free icon">
+            </div>
+
+            <div class="app-body">
+              <h3 class="app-name">Lattosio Free</h3>
+              <p class="app-description" data-key="app1-description">
+                Scanner e ricette per la spesa senza lattosio: leggi gli ingredienti, orientati piu facilmente tra i prodotti e scopri nuove idee da portare in tavola.
+              </p>
+
+              <div class="feature-list">
+                <span class="feature-item" data-key="app1-feature-1">Scanner ingredienti</span>
+                <span class="feature-item" data-key="app1-feature-2">Ricette dedicate</span>
+                <span class="feature-item" data-key="app1-feature-3">Esperienza affidabile</span>
+              </div>
+            </div>
+
+            <div class="app-links">
+              <a class="store-link" href="https://apps.apple.com/it/app/lattosio-free/id6743235131" target="_blank" rel="noreferrer" data-key="app-store-link">App Store</a>
+              <a class="store-link" href="https://play.google.com/store/apps/details?id=com.arcadone.sosmilk&amp;pli=1" target="_blank" rel="noreferrer" data-key="play-store-link">Google Play</a>
+              <a class="policy-link" href="lattosio-free.html" data-key="privacy-link">Privacy Policy</a>
+            </div>
+          </article>
+
+          <article class="app-card">
+            <div class="app-top">
+              <span class="app-badge" data-key="app2-badge">Style & utility</span>
+              <img class="app-icon" src="ic_mywardrobe.png" alt="MyWardrobe icon">
+            </div>
+
+            <div class="app-body">
+              <h3 class="app-name">MyWardrobe</h3>
+              <p class="app-description" data-key="app2-description">
+                Organizza i tuoi capi, crea outfit e lasciati aiutare dallo Stylist AI per trovare combinazioni e idee di look in modo piu semplice.
+              </p>
+
+              <div class="feature-list">
+                <span class="feature-item" data-key="app2-feature-1">Guardaroba organizzato</span>
+                <span class="feature-item" data-key="app2-feature-2">Outfit salvati</span>
+                <span class="feature-item" data-key="app2-feature-3">Stylist AI</span>
+              </div>
+            </div>
+
+            <div class="app-links">
+              <a class="store-link is-disabled" href="#" aria-disabled="true" data-key="coming-soon-ios">App Store soon</a>
+              <a class="store-link is-disabled" href="#" aria-disabled="true" data-key="coming-soon-android">Google Play soon</a>
+              <a class="policy-link" href="mywardrobe.html" data-key="privacy-link">Privacy Policy</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="reveal reveal-delay-3">
+        <div class="section-head">
+          <div class="section-copy">
+            <p class="section-tag" data-key="shots-tag">Lattosio Free</p>
+            <h2 class="section-title" data-key="shots-title">A closer look at the app experience</h2>
+            <p class="section-description" data-key="shots-description">
+              A quick preview of the interface, designed to make ingredient checks and recipe discovery feel immediate and approachable.
+            </p>
+          </div>
+        </div>
+
+        <div class="shots-grid">
+          <div class="shot-card"><img src="screenLattosioFree/screen1_eng.png" alt="Lattosio Free screenshot 1"></div>
+          <div class="shot-card"><img src="screenLattosioFree/screen2_eng.png" alt="Lattosio Free screenshot 2"></div>
+          <div class="shot-card"><img src="screenLattosioFree/screen3_eng.png" alt="Lattosio Free screenshot 3"></div>
+          <div class="shot-card"><img src="screenLattosioFree/screen4_eng.png" alt="Lattosio Free screenshot 4"></div>
+          <div class="shot-card"><img src="screenLattosioFree/screen5_eng.png" alt="Lattosio Free screenshot 5"></div>
+        </div>
+      </section>
+
+      <section id="about" class="reveal reveal-delay-3">
+        <div class="section-head">
+          <div class="section-copy">
+            <p class="section-tag" data-key="about-tag">About this site</p>
+            <h2 class="section-title" data-key="about-title">Independent apps with a practical, user-first mindset</h2>
+            <p class="section-description" data-key="about-description">
+              Each project is built to stay focused on usefulness: clear purpose, simple flows, and features that support daily routines instead of complicating them.
+            </p>
+          </div>
+        </div>
+
+        <div class="notes-grid">
+          <div class="note-card">
+            <h3 data-key="note1-title">What you can expect</h3>
+            <p data-key="note1-text">
+              Thoughtful mobile products shaped around concrete use cases, with attention to clarity, ease of use, and privacy transparency.
+            </p>
+            <ul class="note-list">
+              <li data-key="note1-item-1">Clear and focused product experiences</li>
+              <li data-key="note1-item-2">Simple interfaces designed for everyday use</li>
+              <li data-key="note1-item-3">Dedicated privacy pages for each app</li>
+            </ul>
+          </div>
+
+          <div class="note-card">
+            <h3 data-key="note2-title">Get in touch</h3>
+            <p data-key="note2-text">
+              For product questions, collaborations, or support requests related to the apps, you can reach out directly by email.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="reveal reveal-delay-3">
+      <div class="footer-shell">
+        <span class="footer-copy" data-key="footer-copy">© 2026 ArcaDone. Independent app showcase and privacy hub.</span>
+        <a class="footer-mail" href="mailto:dan.arca91@gmail.com">dan.arca91@gmail.com</a>
       </div>
-      <div class="app-arrow">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1a1714" stroke-width="1.8"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 8h10M9 4l4 4-4 4" />
-        </svg>
-      </div>
-    </a>
+    </footer>
   </div>
-
-  <footer>
-    <span class="footer-copy" data-key="footer-copy">© 2025 Done Arca · Tutti i diritti riservati</span>
-    <a class="footer-email" href="mailto:dan.arca91@gmail.com">dan.arca91@gmail.com</a>
-  </footer>
 
   <script>
     const strings = {
       it: {
-        "label": "Documentazione Legale",
-        "title": "Privacy<br><em>Policies</em>",
-        "subtitle": "In questa pagina trovi le informative sulla privacy delle applicazioni sviluppate da Done Arca. Seleziona un'app per leggere la relativa policy.",
-        "apps-label": "Applicazioni",
-        "app-desc-1": "Guida agli alimenti e al contenuto di lattosio",
-        "app-desc-2": "Organizza outfit e ricevi suggerimenti in base al meteo",
-        "footer-copy": "© 2025 Done Arca · Tutti i diritti riservati",
+        "brand-subtitle": "App design, prodotti mobile e pagine legali",
+        "nav-apps": "App",
+        "nav-about": "Info",
+        "hero-eyebrow": "Vetrina app mobile",
+        "hero-title": "App con una <em>identita chiara</em>.",
+        "hero-subtitle": "App mobile pensate per essere utili ogni giorno, con un'esperienza chiara, funzionalita concrete e privacy policy dedicate.",
+        "hero-cta-primary": "Esplora le app",
+        "hero-cta-secondary": "Contattami",
+        "panel-label-1": "Focus",
+        "panel-title-1": "App utili costruite intorno a decisioni quotidiane",
+        "panel-text-1": "Dalla spesa alla scelta di un outfit, ogni app e progettata per rendere un'attivita specifica piu semplice, rapida e affidabile.",
+        "pill-1": "iOS e Android",
+        "pill-2": "Utility concreta",
+        "pill-3": "Privacy inclusa",
+        "panel-label-2": "Approccio",
+        "panel-title-2": "Prodotti semplici, interfacce chiare e funzionalita mirate",
+        "panel-text-2": "L'obiettivo e pubblicare app immediate da usare e davvero utili nella vita di tutti i giorni.",
+        "apps-tag": "App in evidenza",
+        "apps-title": "App pensate per risolvere esigenze reali ogni giorno",
+        "apps-description": "Esplora le app disponibili, apri le pagine degli store e consulta le relative privacy policy.",
+        "app1-badge": "Salute e alimentazione",
+        "app1-description": "Scanner e ricette per la spesa senza lattosio: leggi gli ingredienti, orientati piu facilmente tra i prodotti e scopri nuove idee da portare in tavola.",
+        "app1-feature-1": "Scanner ingredienti",
+        "app1-feature-2": "Ricette dedicate",
+        "app1-feature-3": "Esperienza affidabile",
+        "app2-badge": "Stile e utility",
+        "app2-description": "Organizza i tuoi capi, crea outfit e lasciati aiutare dallo Stylist AI per trovare combinazioni e idee di look in modo piu semplice.",
+        "app2-feature-1": "Guardaroba organizzato",
+        "app2-feature-2": "Outfit salvati",
+        "app2-feature-3": "Stylist AI",
+        "coming-soon-ios": "App Store presto",
+        "coming-soon-android": "Google Play presto",
+        "privacy-link": "Privacy Policy",
+        "shots-tag": "Lattosio Free",
+        "shots-title": "Uno sguardo piu da vicino all'esperienza dell'app",
+        "shots-description": "Una rapida anteprima dell'interfaccia, progettata per rendere il controllo degli ingredienti e la scoperta di ricette piu immediati e accessibili.",
+        "about-tag": "Sul sito",
+        "about-title": "App indipendenti con un approccio pratico e orientato all'utente",
+        "about-description": "Ogni progetto nasce per restare focalizzato sull'utilita: obiettivi chiari, percorsi semplici e funzionalita che supportano la routine quotidiana senza complicarla.",
+        "note1-title": "Cosa puoi aspettarti",
+        "note1-text": "Prodotti mobile pensati attorno a casi d'uso concreti, con attenzione a chiarezza, facilita d'uso e trasparenza sulla privacy.",
+        "note1-item-1": "Esperienze prodotto chiare e focalizzate",
+        "note1-item-2": "Interfacce semplici per l'uso quotidiano",
+        "note1-item-3": "Privacy policy dedicate per ogni app",
+        "note2-title": "Contatti",
+        "note2-text": "Per domande sui prodotti, collaborazioni o richieste di supporto relative alle app, puoi scrivere direttamente via email.",
+        "footer-copy": "© 2026 ArcaDone. Showcase indipendente di app e hub privacy."
       },
       en: {
-        "label": "Legal Documentation",
-        "title": "Privacy<br><em>Policies</em>",
-        "subtitle": "This page contains the privacy policies for apps developed by Done Arca. Select an app to read its policy.",
-        "apps-label": "Applications",
-        "app-desc-1": "Food guide and lactose content tracker",
-        "app-desc-2": "Organize outfits and get weather-based suggestions",
-        "footer-copy": "© 2025 Done Arca · All rights reserved",
+        "brand-subtitle": "App design, mobile products and legal pages",
+        "nav-apps": "Apps",
+        "nav-about": "About",
+        "hero-eyebrow": "Mobile app showcase",
+        "hero-title": "Apps with a <em>clear identity</em>.",
+        "hero-subtitle": "Mobile apps designed to be useful every day, with a clear experience, practical features, and dedicated privacy pages.",
+        "hero-cta-primary": "Explore apps",
+        "hero-cta-secondary": "Get in touch",
+        "panel-label-1": "Featured focus",
+        "panel-title-1": "Useful apps built around everyday decisions",
+        "panel-text-1": "From grocery choices to outfit planning, each app is designed to make a specific task easier, faster, and more reliable.",
+        "pill-1": "iOS and Android",
+        "pill-2": "Practical utility",
+        "pill-3": "Privacy included",
+        "panel-label-2": "Approach",
+        "panel-title-2": "Simple products, clear interfaces, and focused features",
+        "panel-text-2": "The goal is to ship apps that feel immediate to use and genuinely helpful in daily life.",
+        "apps-tag": "Featured apps",
+        "apps-title": "Apps designed to solve real daily needs",
+        "apps-description": "Explore the available apps, open their store pages, and read the related privacy policies.",
+        "app1-badge": "Health & food",
+        "app1-description": "Scanner and recipes for lactose-free shopping: check ingredients, move more confidently through products, and discover new ideas for your meals.",
+        "app1-feature-1": "Ingredient scanner",
+        "app1-feature-2": "Dedicated recipes",
+        "app1-feature-3": "Reliable experience",
+        "app2-badge": "Style & utility",
+        "app2-description": "Organize your clothes, create outfits, and get help from Stylist AI to find combinations and fresh look ideas more easily.",
+        "app2-feature-1": "Organized wardrobe",
+        "app2-feature-2": "Saved outfits",
+        "app2-feature-3": "Stylist AI",
+        "coming-soon-ios": "App Store soon",
+        "coming-soon-android": "Google Play soon",
+        "privacy-link": "Privacy Policy",
+        "shots-tag": "Lattosio Free",
+        "shots-title": "A closer look at the app experience",
+        "shots-description": "A quick preview of the interface, designed to make ingredient checks and recipe discovery feel immediate and approachable.",
+        "about-tag": "About this site",
+        "about-title": "Independent apps with a practical, user-first mindset",
+        "about-description": "Each project is built to stay focused on usefulness: clear purpose, simple flows, and features that support daily routines instead of complicating them.",
+        "note1-title": "What you can expect",
+        "note1-text": "Thoughtful mobile products shaped around concrete use cases, with attention to clarity, ease of use, and privacy transparency.",
+        "note1-item-1": "Clear and focused product experiences",
+        "note1-item-2": "Simple interfaces designed for everyday use",
+        "note1-item-3": "Dedicated privacy pages for each app",
+        "note2-title": "Get in touch",
+        "note2-text": "For product questions, collaborations, or support requests related to the apps, you can reach out directly by email.",
+        "footer-copy": "© 2026 ArcaDone. Independent app showcase and privacy hub."
       }
     };
 
     function setLang(lang) {
-      document.querySelectorAll('[data-key]').forEach(el => {
+      document.querySelectorAll("[data-key]").forEach((el) => {
         const key = el.dataset.key;
-        if (strings[lang][key] !== undefined) {
+        if (strings[lang] && strings[lang][key] !== undefined) {
           el.innerHTML = strings[lang][key];
         }
       });
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
       });
+
       document.documentElement.lang = lang;
-      localStorage.setItem('lang', lang);
+      localStorage.setItem("lang", lang);
     }
 
-    // Auto-detect language
     (function init() {
-      const saved = localStorage.getItem('lang');
-      const browser = (navigator.language || 'it').slice(0, 2).toLowerCase();
-      const detected = saved || (browser === 'it' ? 'it' : 'en');
+      const saved = localStorage.getItem("lang");
+      const browser = (navigator.language || "it").slice(0, 2).toLowerCase();
+      const detected = saved || (browser === "it" ? "it" : "en");
       setLang(detected);
     })();
   </script>
-
 </body>
-
 </html>
