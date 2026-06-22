@@ -56,7 +56,7 @@
   <a class="back-link" href="habita-terms-of-use.html">Terms of Use</a>
 
   <h1>Privacy Policy - Habita</h1>
-  <p class="meta"><strong>Ultimo aggiornamento:</strong> 18 maggio 2026</p>
+  <p class="meta"><strong>Ultimo aggiornamento:</strong> 22 giugno 2026</p>
 
   <p>
     Questa Informativa sulla privacy descrive come vengono raccolti, utilizzati e protetti i dati personali
@@ -86,6 +86,12 @@
     <li><strong>Dati di acquisto</strong>: stato abbonamento, entitlement e informazioni tecniche gestite tramite RevenueCat.</li>
     <li><strong>Dati pubblicitari</strong>: identificativi e dati tecnici necessari a mostrare annunci agli utenti non premium, se abilitati.</li>
     <li><strong>Dati tecnici e diagnostici</strong>: identificativo dispositivo, log tecnici, crash report e dati di utilizzo dell'app.</li>
+    <li>
+      <strong>Dati Google Calendar, solo se l'utente attiva volontariamente l'integrazione</strong>:
+      identificativo, indirizzo email e nome dell'account Google collegato; elenco dei calendari disponibili;
+      nome e colore dei calendari selezionati; titolo, descrizione, luogo, URL, data, ora, durata, stato e
+      informazioni sulle occorrenze degli eventi importati.
+    </li>
   </ul>
 
   <h2>Modalita di raccolta</h2>
@@ -96,7 +102,73 @@
     <li>tramite Firebase per autenticazione, database, notifiche, funzioni cloud, analytics e crash reporting;</li>
     <li>tramite RevenueCat per la gestione degli abbonamenti e dello stato premium;</li>
     <li>tramite Google AdMob, solo quando la monetizzazione pubblicitaria e abilitata per utenti non premium.</li>
+    <li>
+      tramite Google Calendar API e Google Sign-In, esclusivamente quando l'utente sceglie di collegare il
+      proprio account Google e concede le autorizzazioni richieste.
+    </li>
   </ul>
+
+  <h2>Integrazione con Google Calendar</h2>
+  <p>
+    Il collegamento a Google Calendar e facoltativo, separato dall'accesso all'account Habita e può essere
+    revocato in qualsiasi momento. Habita richiede esclusivamente autorizzazioni di sola lettura:
+    <code>calendar.events.readonly</code> per leggere gli eventi e
+    <code>calendar.calendarlist.readonly</code> per mostrare l'elenco dei calendari disponibili.
+  </p>
+
+  <h3>Dati Google a cui Habita accede</h3>
+  <p>
+    Dopo il consenso dell'utente, Habita accede ai dati essenziali dell'account collegato, all'elenco dei
+    calendari e agli eventi compresi nella finestra temporale supportata dall'app. Per gli eventi possono essere
+    letti titolo, descrizione, luogo, URL, data e ora, durata, stato, calendario di origine e informazioni
+    necessarie a rappresentare ricorrenze ed eccezioni. Habita non richiede accesso in scrittura e non legge o
+    replica i promemoria configurati su Google Calendar.
+  </p>
+
+  <h3>Come vengono utilizzati i dati Google</h3>
+  <p>
+    I dati ottenuti da Google Calendar sono utilizzati esclusivamente per mostrare nell'interfaccia di Habita
+    gli eventi dei calendari selezionati dall'utente, mantenerli aggiornati e consentire l'apertura dell'evento
+    originale in Google Calendar. Habita non crea, modifica o elimina eventi nell'account Google dell'utente.
+  </p>
+
+  <h3>Archiviazione e condivisione dei dati Google</h3>
+  <p>
+    Gli eventi importati da Google Calendar e la configurazione dell'integrazione sono memorizzati localmente
+    sul dispositivo associati all'account Habita in uso. Gli eventi Google personali non vengono inseriti nel
+    database condiviso della casa e non vengono inviati agli altri membri.
+  </p>
+  <p>
+    Se l'utente seleziona esplicitamente la funzione <strong>Condividi con la casa</strong>, Habita crea una
+    copia indipendente dell'evento come normale evento Habita. Solo questa copia viene salvata nel database
+    condiviso e resa visibile ai membri della casa. La copia non rimane sincronizzata con Google Calendar e non
+    include i promemoria Google.
+  </p>
+
+  <h3>Conservazione, disconnessione ed eliminazione</h3>
+  <p>
+    I dati Google importati restano sul dispositivo finché l'integrazione è attiva. Quando l'utente disconnette
+    Google Calendar da Habita, l'autorizzazione viene revocata e la configurazione locale, l'elenco dei calendari
+    e gli eventi Google importati vengono eliminati dal dispositivo. Le copie che l'utente aveva scelto di
+    condividere con la casa restano normali eventi Habita e possono essere eliminate separatamente tramite le
+    funzioni dell'app.
+  </p>
+
+  <h3>Limitazioni d'uso dei dati Google</h3>
+  <p>
+    Habita non vende i dati Google, non li utilizza per pubblicità, profilazione, valutazioni creditizie o
+    addestramento di modelli di intelligenza artificiale e non li trasferisce a data broker o piattaforme
+    pubblicitarie. I dati Google non vengono letti da persone, salvo quando strettamente necessario per motivi
+    di sicurezza, per adempiere a obblighi di legge o con il consenso esplicito dell'utente per una specifica
+    richiesta di assistenza.
+  </p>
+  <p>
+    L'uso e il trasferimento ad altre applicazioni delle informazioni ricevute dalle API di Google da parte di
+    Habita rispettano la
+    <a href="https://developers.google.com/terms/api-services-user-data-policy">
+      Google API Services User Data Policy
+    </a>, inclusi i requisiti di Limited Use.
+  </p>
 
   <h2>Finalita del trattamento</h2>
   <p>I dati raccolti sono utilizzati per:</p>
@@ -139,6 +211,10 @@
     <li><strong>Firebase</strong>, per autenticazione, database, Cloud Functions, notifiche, analytics e crash reporting;</li>
     <li><strong>RevenueCat</strong>, per abbonamenti, entitlement, acquisti e ripristino acquisti;</li>
     <li><strong>Google AdMob</strong>, per la visualizzazione di annunci agli utenti non premium, quando abilitato;</li>
+    <li>
+      <strong>Google Calendar API e Google Sign-In</strong>, esclusivamente per autorizzare il collegamento e
+      importare in sola lettura i calendari e gli eventi scelti dall'utente;
+    </li>
     <li>fornitori di servizi infrastrutturali o diagnostici necessari alla manutenzione dell'app;</li>
     <li>autorita competenti, ove richiesto dalla legge.</li>
   </ul>
