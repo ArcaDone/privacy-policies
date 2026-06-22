@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Habita aiuta famiglie e coinquilini a organizzare attività, spese, liste ed eventi della casa in un unico spazio condiviso.">
+  <meta name="theme-color" content="#16765f">
+  <title>Habita · La casa, organizzata insieme</title>
+  <style>
+    :root {
+      --bg: #f3f0e9;
+      --surface: #fffdf8;
+      --ink: #17201d;
+      --muted: #5d6863;
+      --green: #16765f;
+      --green-dark: #0d5543;
+      --green-soft: #dcece6;
+      --line: rgba(23, 32, 29, 0.11);
+      --shadow: 0 24px 70px rgba(38, 58, 50, 0.12);
+      --radius: 28px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 2%, rgba(22, 118, 95, 0.14), transparent 30rem),
+        linear-gradient(180deg, #faf8f3 0%, var(--bg) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    .page { width: min(calc(100% - 36px), var(--max)); margin: 0 auto; }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      box-shadow: 0 10px 24px rgba(22, 118, 95, 0.2);
+    }
+
+    nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a {
+      color: var(--muted);
+      padding: 9px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+    nav a:hover { color: var(--ink); background: rgba(23, 32, 29, 0.06); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: 34px;
+      align-items: center;
+      padding: 70px 0 86px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--green);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 32px; height: 2px; background: currentColor; }
+
+    h1 {
+      margin: 18px 0 22px;
+      max-width: 12ch;
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+    }
+
+    .lead {
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.16rem);
+    }
+
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 19px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 750;
+    }
+    .button-primary { color: white; background: var(--green); box-shadow: 0 14px 28px rgba(22, 118, 95, 0.22); }
+    .button-primary:hover { background: var(--green-dark); }
+    .button-secondary { background: var(--surface); border: 1px solid var(--line); }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 430px;
+      padding: 34px;
+      border: 1px solid rgba(22, 118, 95, 0.15);
+      border-radius: 36px;
+      background: linear-gradient(145deg, #f7fffb, #dbece6);
+      box-shadow: var(--shadow);
+    }
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(22, 118, 95, 0.12);
+    }
+    .hero-card img { width: 92px; height: 92px; border-radius: 26px; position: relative; z-index: 1; }
+    .hero-card h2 { margin: 26px 0 10px; font-size: 2rem; position: relative; z-index: 1; }
+    .hero-card p { color: var(--muted); position: relative; z-index: 1; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; position: relative; z-index: 1; }
+    .chip {
+      padding: 8px 12px;
+      border: 1px solid rgba(22, 118, 95, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.66);
+      color: var(--green-dark);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    section { padding: 76px 0; }
+    .section-heading { max-width: 720px; margin-bottom: 30px; }
+    .section-heading h2 { margin: 0 0 12px; font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -0.045em; line-height: 1.05; }
+    .section-heading p { margin: 0; color: var(--muted); }
+
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, 0.82);
+    }
+    .card-number { color: var(--green); font-size: 0.78rem; font-weight: 850; letter-spacing: 0.1em; }
+    .card h3 { margin: 14px 0 8px; font-size: 1.18rem; }
+    .card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+
+    .google {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 30px;
+      align-items: center;
+      padding: 42px;
+      border-radius: 34px;
+      background: var(--ink);
+      color: white;
+    }
+    .google h2 { margin: 0 0 14px; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -0.04em; }
+    .google p, .google li { color: #c8d0cc; }
+    .google ul { margin: 0; padding-left: 20px; }
+    .google strong { color: white; }
+
+    .legal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .legal h2 { margin: 0 0 6px; }
+    .legal p { margin: 0; color: var(--muted); }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 38px 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 820px) {
+      header { align-items: flex-start; }
+      nav { max-width: 58%; }
+      .hero, .google { grid-template-columns: 1fr; }
+      .hero { padding-top: 36px; }
+      .grid { grid-template-columns: 1fr; }
+      .legal { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 560px) {
+      header { flex-direction: column; }
+      nav { max-width: none; justify-content: flex-start; }
+      h1 { font-size: 3.35rem; }
+      .hero-card { min-height: 380px; }
+      .google { padding: 28px 22px; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="habita-home.html">
+        <img src="habita-icon.png" alt="Icona di Habita">
+        <span>Habita</span>
+      </a>
+      <nav aria-label="Navigazione principale">
+        <a href="#funzioni">Funzioni</a>
+        <a href="#google-calendar">Google Calendar</a>
+        <a href="habita.html">Privacy</a>
+        <a href="habita-terms-of-use.html">Termini</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <span class="eyebrow">Organizzazione domestica condivisa</span>
+          <h1>La casa, organizzata insieme.</h1>
+          <p class="lead">
+            Habita riunisce attività, lista della spesa, spese, routine ed eventi in uno spazio condiviso per
+            famiglie e coinquilini. Ogni membro vede ciò che serve e collabora alla gestione quotidiana della casa.
+          </p>
+          <div class="actions">
+            <a class="button button-primary" href="#funzioni">Scopri Habita</a>
+            <a class="button button-secondary" href="mailto:dan.arca91@gmail.com">Contatta lo sviluppatore</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Panoramica di Habita">
+          <img src="habita-icon.png" alt="">
+          <h2>Un solo posto per la vita di casa.</h2>
+          <p>Dalle piccole cose quotidiane agli impegni condivisi, Habita mantiene tutti aggiornati.</p>
+          <div class="chips">
+            <span class="chip">Faccende</span>
+            <span class="chip">Spesa</span>
+            <span class="chip">Spese</span>
+            <span class="chip">Calendario</span>
+            <span class="chip">Routine</span>
+            <span class="chip">Promemoria</span>
+          </div>
+        </aside>
+      </section>
+
+      <section id="funzioni">
+        <div class="section-heading">
+          <h2>Tutto ciò che serve alla casa.</h2>
+          <p>Funzioni coordinate, progettate per ridurre messaggi sparsi, dimenticanze e conti da ricostruire.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <span class="card-number">01</span>
+            <h3>Organizza</h3>
+            <p>Assegna faccende, crea routine, conserva liste e pianifica gli eventi domestici.</p>
+          </article>
+          <article class="card">
+            <span class="card-number">02</span>
+            <h3>Condividi</h3>
+            <p>I membri della stessa casa collaborano sugli stessi contenuti, con aggiornamenti sincronizzati.</p>
+          </article>
+          <article class="card">
+            <span class="card-number">03</span>
+            <h3>Tieni sotto controllo</h3>
+            <p>Registra spese, suddivisioni e saldi per sapere sempre come sono distribuiti i costi della casa.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="google-calendar">
+        <div class="google">
+          <div>
+            <span class="eyebrow">Integrazione opzionale</span>
+            <h2>Google Calendar in Habita</h2>
+            <p>
+              L’utente può collegare il proprio account Google per visualizzare in Habita gli eventi dei calendari
+              selezionati. Il collegamento è separato dall’accesso all’account Habita.
+            </p>
+          </div>
+          <ul>
+            <li>Habita richiede soltanto accesso <strong>in lettura</strong> agli eventi e all’elenco dei calendari.</li>
+            <li>Gli eventi importati restano <strong>personali e memorizzati localmente</strong> sul dispositivo.</li>
+            <li>Habita non modifica e non elimina eventi su Google Calendar.</li>
+            <li>Un evento viene condiviso con la casa solo quando l’utente sceglie esplicitamente di crearne una copia.</li>
+            <li>Disconnettendo Google Calendar, i dati importati e la configurazione locale vengono eliminati.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="legal">
+          <div>
+            <h2>Trasparenza e contatti</h2>
+            <p>Consulta i documenti legali oppure scrivi allo sviluppatore per richieste relative ad Habita.</p>
+          </div>
+          <div class="actions">
+            <a class="button button-secondary" href="habita.html">Privacy Policy</a>
+            <a class="button button-secondary" href="habita-terms-of-use.html">Termini di utilizzo</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Habita · Sviluppata da Danilo Arcadipane</span>
+      <a href="mailto:dan.arca91@gmail.com">dan.arca91@gmail.com</a>
+    </footer>
+  </div>
+</body>
+</html>
